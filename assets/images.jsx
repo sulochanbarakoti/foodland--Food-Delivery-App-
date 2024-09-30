@@ -14,6 +14,8 @@ import ramenBowl from "./ramenBowl.png";
 import steakAndFries from "./steakAndFries.png";
 import shrimpScampi from "./shrimpScampi.png";
 import foodBg from "./foodBg.png";
+import delivery from "./delivery.png";
+import deliveryBoy from "./delivery-boy.gif";
 
 export default {
   foodland,
@@ -32,4 +34,6 @@ export default {
   steakAndFries,
   shrimpScampi,
   foodBg,
+  delivery,
+  deliveryBoy,
 };

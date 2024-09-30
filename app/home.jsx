@@ -13,6 +13,7 @@ import RecommendedDishes from "../components/recommendedDishes";
 import PopularCategory from "../components/popularCategory";
 import RestaurantSlider from "../components/restaurantSlider";
 import FoodList from "../components/foodList";
+import { StatusBar } from "expo-status-bar";
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState("Popular");
@@ -68,6 +69,7 @@ const Home = () => {
         </View>
         <FoodList menu={menu} />
       </SafeAreaView>
+      <StatusBar style="light" />
     </ScrollView>
   );
 };

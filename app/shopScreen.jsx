@@ -8,10 +8,13 @@ import {
 } from "react-native";
 import React from "react";
 import Icon from "react-native-vector-icons/Ionicons";
+import Entypo from "react-native-vector-icons/Entypo";
 import RecommendedDishes from "../components/recommendedDishes";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import images from "../assets/images";
 import CartIcon from "../components/cartIcon";
+import FoodList from "../components/foodList";
+import { menuList } from "../data/data";
 
 const ShopScreen = () => {
   const { params } = useRoute();
@@ -23,39 +26,41 @@ const ShopScreen = () => {
       <CartIcon />
       <ScrollView className="bg-white">
         {/* Image with Black Overlay */}
-        <ImageBackground
-          source={images.foodBg} // Replace with your image
-          className="w-full h-48 relative"
-        >
-          <View className="absolute inset-0 bg-black opacity-50" />
+        <View style={{ backgroundColor: "rgba(255,255,255,0.3)" }}>
+          <ImageBackground
+            source={images.foodBg} // Replace with your image
+            className="w-full h-48 relative"
+          >
+            <View className="absolute inset-0 bg-black opacity-50" />
 
-          <View className="absolute top-3 left-0 p-4">
-            <TouchableOpacity
-              onPress={() => navigation.goBack()}
-              className="bg-white p-1 rounded-full"
-            >
-              <Icon name="arrow-back" size={24} color="black" />
-            </TouchableOpacity>
-          </View>
-          <View className="absolute top-3 right-0 p-4">
-            <Icon name="heart-outline" size={24} color="white" />
-          </View>
-          {/* Restaurant Information */}
-          <View className="flex justify-center items-center absolute top-16 left-14">
-            <Text className="text-white text-2xl font-bold">
-              {item.restaurant}
-            </Text>
-            <Text className="text-white">Get 50% Offer</Text>
-          </View>
-
-          {/* Time and Delivery Information */}
-          <View className="absolute bottom-4 left-5 flex-row items-center">
-            <View className="bg-red-500 px-2 py-1 rounded-full">
-              <Text className="text-white text-sm">{item.time}</Text>
+            <View className="absolute top-3 left-0 p-4">
+              <TouchableOpacity
+                onPress={() => navigation.goBack()}
+                className="bg-white p-1 rounded-full"
+              >
+                <Icon name="arrow-back" size={24} color="black" />
+              </TouchableOpacity>
             </View>
-            <Text className="text-white ml-3">4.9 (100 reviews)</Text>
-          </View>
-        </ImageBackground>
+            <View className="absolute top-3 right-0 p-4">
+              <Icon name="heart-outline" size={24} color="white" />
+            </View>
+            {/* Restaurant Information */}
+            <View className="flex justify-center items-center absolute top-16 left-14">
+              <Text className="text-white text-2xl font-bold">
+                {item.restaurant}
+              </Text>
+              <Text className="text-white">Get 50% Offer</Text>
+            </View>
+
+            {/* Time and Delivery Information */}
+            <View className="absolute bottom-4 left-5 flex-row items-center">
+              <View className="bg-red-500 px-2 py-1 rounded-full">
+                <Text className="text-white text-sm">{item.time}</Text>
+              </View>
+              <Text className="text-white ml-3">4.9 (100 reviews)</Text>
+            </View>
+          </ImageBackground>
+        </View>
         <Image source={item.image} className=" w-[90%] h-48 rounded-lg m-5" />
         {/* Product Details */}
         <View className="px-5 ">
@@ -71,12 +76,14 @@ const ShopScreen = () => {
             {/* Favorite & Quantity */}
             <View className="flex-row items-center">
               <TouchableOpacity>
-                <Text className="text-pink-500 text-2xl mx-3">-</Text>
+                {/* <Text className="text-pink-500 text-2xl mx-3">-</Text> */}
+                <Entypo name="circle-with-minus" size={24} color="#ff3131" />
               </TouchableOpacity>
               <View className="flex-row items-center">
                 <Text className="text-lg px-2">05</Text>
                 <TouchableOpacity>
-                  <Text className="text-red-500 text-2xl">+</Text>
+                  {/* <Text className="text-red-500 text-2xl">+</Text> */}
+                  <Entypo name="circle-with-plus" size={24} color="#ff3131" />
                 </TouchableOpacity>
               </View>
             </View>
@@ -114,6 +121,15 @@ const ShopScreen = () => {
           </View> */}
         <View className="p-4">
           <RecommendedDishes />
+        </View>
+        <View className="p-4">
+          <Text className="text-lg font-semibold mb-2">Popular Dishes</Text>
+          <Text className="text-sm text-gray-500 mb-4">
+            Choose your goods from here
+          </Text>
+          <View>
+            <FoodList menu={menuList} />
+          </View>
         </View>
       </ScrollView>
     </View>
