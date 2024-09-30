@@ -20,6 +20,13 @@ const RootLayout = () => {
           presentation: "modal",
         }}
       />
+      <Stack.Screen
+        name="deliveryScreen"
+        options={{
+          headerShown: false,
+          presentation: "modal",
+        }}
+      />
     </Stack>
   );
 };

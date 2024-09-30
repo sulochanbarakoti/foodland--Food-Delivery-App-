@@ -69,7 +69,7 @@ const Home = () => {
         </View>
         <FoodList menu={menu} />
       </SafeAreaView>
-      <StatusBar style="light" />
+      <StatusBar style="dark" />
     </ScrollView>
   );
 };

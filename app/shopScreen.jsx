@@ -15,6 +15,7 @@ import images from "../assets/images";
 import CartIcon from "../components/cartIcon";
 import FoodList from "../components/foodList";
 import { menuList } from "../data/data";
+import { StatusBar } from "expo-status-bar";
 
 const ShopScreen = () => {
   const { params } = useRoute();
@@ -132,6 +133,7 @@ const ShopScreen = () => {
           </View>
         </View>
       </ScrollView>
+      <StatusBar style="light" />
     </View>
   );
 };

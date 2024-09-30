@@ -16,6 +16,8 @@ import shrimpScampi from "./shrimpScampi.png";
 import foodBg from "./foodBg.png";
 import delivery from "./delivery.png";
 import deliveryBoy from "./delivery-boy.gif";
+import deliveryService from "./deliveryService.png";
+import profile from "./profile.jpg";
 
 export default {
   foodland,
@@ -36,4 +38,6 @@ export default {
   foodBg,
   delivery,
   deliveryBoy,
+  deliveryService,
+  profile,
 };
