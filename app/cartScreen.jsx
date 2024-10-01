@@ -1,17 +1,39 @@
 import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Icon from "react-native-vector-icons/Ionicons";
 import images from "../assets/images";
 import { StatusBar } from "expo-status-bar";
 import { useNavigation } from "@react-navigation/native";
+import { CartContext } from "../context/cartContext";
+import { menuList } from "../data/data";
 
 const CartScreen = () => {
   let navigation = useNavigation();
+  const { getTotalCart, getTotalAmount, cartItems } = useContext(CartContext);
+  const [orderItems, setOrderItems] = useState({});
+
+  // useEffect(() => {
+  //   let newOrderItems = {};
+  //   for (const key in cartItems) {
+  //     if (cartItems[key] > 0) {
+  //       const food = menuList.find((i) => i.id === Number(key));
+  //         if (food) {
+  //           newOrderItems = { ...newOrderItems, food };
+  //         }
+  //         console.log(food);
+  //       setOrderItems(...newOrderItems, food);
+  //     }
+  //   }
+  // }, [cartItems, menuList]);
+
+  console.log(cartItems, orderItems);
   return (
     <View className=" pt-7  space-y-2">
       <View className=" px-5 flex-row justify-between items-center">
         <View>
-          <Icon name="arrow-back-circle-sharp" size={34} color="#ff3131" />
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Icon name="arrow-back-circle-sharp" size={34} color="#ff3131" />
+          </TouchableOpacity>
         </View>
         <View className="flex-col justify-center items-center">
           <Text className="text-lg font-extrabold">Your Cart</Text>
@@ -33,11 +55,26 @@ const CartScreen = () => {
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 50 }}
-      ></ScrollView>
+      >
+        <View>
+          {orderItems.length > 0 ? (
+            orderItems.map((item, index) => (
+              <View key={index} className="mb-4 p-4 bg-gray-100 rounded-lg">
+                <Text className="text-lg font-bold">{item.name}</Text>
+                <Text className="text-sm text-gray-600">
+                  ${item.price.toFixed(2)}
+                </Text>
+              </View>
+            ))
+          ) : (
+            <Text className="p-5 h-96">No items in your order yet.</Text>
+          )}
+        </View>
+      </ScrollView>
       <View className="p-5 space-y-2 bg-secondary rounded-xl">
         <View className="flex-row justify-between items-center">
           <Text className="font-semibold">Subtotal</Text>
-          <Text className="font-bold text-gray-700">$10.00</Text>
+          <Text className="font-bold text-gray-700">${getTotalAmount()}</Text>
         </View>
         <View className="flex-row justify-between items-center">
           <Text className="font-semibold">Delivery Fee</Text>
@@ -45,7 +82,9 @@ const CartScreen = () => {
         </View>
         <View className="flex-row justify-between items-center">
           <Text className="font-semibold ">Order Total</Text>
-          <Text className="font-extrabold">$12.00</Text>
+          <Text className="font-extrabold">
+            ${Number(getTotalAmount()) + 2}
+          </Text>
         </View>
         <View>
           <TouchableOpacity onPress={() => navigation.navigate("orderScreen")}>

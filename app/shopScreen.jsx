@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import React from "react";
+import React, { useContext, useState } from "react";
 import Icon from "react-native-vector-icons/Ionicons";
 import Entypo from "react-native-vector-icons/Entypo";
 import RecommendedDishes from "../components/recommendedDishes";
@@ -16,16 +16,28 @@ import CartIcon from "../components/cartIcon";
 import FoodList from "../components/foodList";
 import { menuList } from "../data/data";
 import { StatusBar } from "expo-status-bar";
+import { CartContext } from "../context/cartContext";
 
 const ShopScreen = () => {
+  const { addToCart, removeFromCart } = useContext(CartContext);
   const { params } = useRoute();
   const navigation = useNavigation();
   let item = params;
-  console.log(params);
+  const [number, setNumber] = useState(0);
+
+  const handlePlus = () => {
+    setNumber(number + 1);
+    addToCart(item.id);
+  };
+  const handleMinus = () => {
+    if (number > 0) {
+      setNumber(number - 1);
+    }
+  };
   return (
     <View>
       <CartIcon />
-      <ScrollView className="bg-white">
+      <ScrollView className="bg-white mb-20">
         {/* Image with Black Overlay */}
         <View style={{ backgroundColor: "rgba(255,255,255,0.3)" }}>
           <ImageBackground
@@ -76,14 +88,12 @@ const ShopScreen = () => {
 
             {/* Favorite & Quantity */}
             <View className="flex-row items-center">
-              <TouchableOpacity>
-                {/* <Text className="text-pink-500 text-2xl mx-3">-</Text> */}
+              <TouchableOpacity onPress={() => handleMinus()}>
                 <Entypo name="circle-with-minus" size={24} color="#ff3131" />
               </TouchableOpacity>
               <View className="flex-row items-center">
-                <Text className="text-lg px-2">05</Text>
-                <TouchableOpacity>
-                  {/* <Text className="text-red-500 text-2xl">+</Text> */}
+                <Text className="text-lg px-2">$ {number}</Text>
+                <TouchableOpacity onPress={() => handlePlus()}>
                   <Entypo name="circle-with-plus" size={24} color="#ff3131" />
                 </TouchableOpacity>
               </View>
