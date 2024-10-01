@@ -19,13 +19,29 @@ import { StatusBar } from "expo-status-bar";
 import { CartContext } from "../context/cartContext";
 
 const ShopScreen = () => {
-  const { addToCart, removeFromCart } = useContext(CartContext);
+  const { addToCart, removeFromCart, cartItems } = useContext(CartContext);
   const { params } = useRoute();
   const navigation = useNavigation();
   let item = params;
   const [number, setNumber] = useState(0);
+  const [quantity, setQuantity] = useState(0);
 
-  useEffect(() => {}, [number]);
+  useEffect(() => {
+    for (const key in cartItems) {
+      if (Number(key) === item.id) {
+        setQuantity(cartItems[key]);
+        console.log(Number(key));
+      }
+      console.log(
+        "Count changed, component rerendered",
+        item.id,
+        Number(key),
+        quantity,
+        cartItems
+      );
+    }
+    // setNumber(0);
+  }, [quantity]);
   const handlePlus = () => {
     setNumber(number + 1);
     addToCart(item.id);
