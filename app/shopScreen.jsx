@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Icon from "react-native-vector-icons/Ionicons";
 import Entypo from "react-native-vector-icons/Entypo";
 import RecommendedDishes from "../components/recommendedDishes";
@@ -25,6 +25,7 @@ const ShopScreen = () => {
   let item = params;
   const [number, setNumber] = useState(0);
 
+  useEffect(() => {}, [number]);
   const handlePlus = () => {
     setNumber(number + 1);
     addToCart(item.id);
@@ -32,6 +33,7 @@ const ShopScreen = () => {
   const handleMinus = () => {
     if (number > 0) {
       setNumber(number - 1);
+      removeFromCart(item.id);
     }
   };
   return (

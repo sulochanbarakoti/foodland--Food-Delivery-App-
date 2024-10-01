@@ -11,20 +11,20 @@ const CartScreen = () => {
   let navigation = useNavigation();
   const { getTotalCart, getTotalAmount, cartItems } = useContext(CartContext);
   const [orderItems, setOrderItems] = useState({});
+  const [quantity, setQuantity] = useState();
 
-  // useEffect(() => {
-  //   let newOrderItems = {};
-  //   for (const key in cartItems) {
-  //     if (cartItems[key] > 0) {
-  //       const food = menuList.find((i) => i.id === Number(key));
-  //         if (food) {
-  //           newOrderItems = { ...newOrderItems, food };
-  //         }
-  //         console.log(food);
-  //       setOrderItems(...newOrderItems, food);
-  //     }
-  //   }
-  // }, [cartItems, menuList]);
+  useEffect(() => {
+    let newOrderItems = [];
+    for (const key in cartItems) {
+      if (cartItems[key] > 0) {
+        const food = menuList.find((i) => i.id === Number(key));
+        if (food) {
+          newOrderItems = [...newOrderItems, food];
+        }
+      }
+    }
+    setOrderItems(newOrderItems);
+  }, [cartItems, menuList]);
 
   console.log(cartItems, orderItems);
   return (
@@ -59,11 +59,23 @@ const CartScreen = () => {
         <View>
           {orderItems.length > 0 ? (
             orderItems.map((item, index) => (
-              <View key={index} className="mb-4 p-4 bg-gray-100 rounded-lg">
-                <Text className="text-lg font-bold">{item.name}</Text>
-                <Text className="text-sm text-gray-600">
-                  ${item.price.toFixed(2)}
-                </Text>
+              <View
+                key={index}
+                className="mb-4 p-4 bg-gray-200 rounded-lg flex-row justify-between items-center"
+              >
+                <View>
+                  <Image source={item.image} className="w-16 h-16 rounded-xl" />
+                </View>
+                <View>
+                  <Text className="font-extrabold">Quantity</Text>
+                  <Text></Text>
+                </View>
+                <View>
+                  <Text className="text-lg font-bold">{item.name}</Text>
+                  <Text className="text-sm text-gray-600">
+                    ${item.price.toFixed(2)}
+                  </Text>
+                </View>
               </View>
             ))
           ) : (
