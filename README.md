@@ -19,7 +19,7 @@
 
 <h2>🖼️ Screenshots</h2>
 <p>Below are some screenshots of the app:</p>
-<img src="path_to_screenshot1.png" alt="Screenshot 1" width="300" />
+<img src="./picture/loadingScreen.jpg" alt="Screenshot 1" width="300" />
 <img src="path_to_screenshot2.png" alt="Screenshot 2" width="300" />
 <img src="path_to_screenshot3.png" alt="Screenshot 3" width="300" />
 
