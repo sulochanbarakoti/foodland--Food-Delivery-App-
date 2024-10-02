@@ -8,20 +8,21 @@
 
 <h1>🍔 FoodLand - Mobile Food Ordering App</h1>
 
-<h2>🎥 Demo Video</h2>
-<p>
-    Here’s a short demo of the app in action:
-</p>
 <video controls width="600">
-    <source src="path_to_your_demo_video.mp4" type="video/mp4">
+    <source src="./picture/video.mp4" type="video/mp4">
     Your browser does not support the video tag.
 </video>
 
 <h2>🖼️ Screenshots</h2>
 <p>Below are some screenshots of the app:</p>
-<img src="./picture/loadingScreen.jpg" alt="Screenshot 1" width="300" />
-<img src="path_to_screenshot2.png" alt="Screenshot 2" width="300" />
-<img src="path_to_screenshot3.png" alt="Screenshot 3" width="300" />
+<div style="display: flex; gap: 10px;">  
+    <img src="./picture/loadingScreen.jpg" alt="Screenshot 1" width="150" />
+    <img src="./picture/useLocation.jpg" alt="Screenshot 2" width="150" />
+    <img src="./picture/home.jpg" alt="Screenshot 3" width="150" />
+    <img src="./picture/shop.jpg" alt="Screenshot 3" width="150" />
+    <img src="./picture/cart.jpg" alt="Screenshot 3" width="150" />
+    <img src="./picture/deliveryRider.jpg" alt="Screenshot 3" width="150" />
+</div>
 
 <p>
     Welcome to <strong>FoodLand</strong>, a mobile application built using React Native and styled with Tailwind CSS. 
