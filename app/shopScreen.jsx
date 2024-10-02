@@ -30,18 +30,18 @@ const ShopScreen = () => {
     for (const key in cartItems) {
       if (Number(key) === item.id) {
         setQuantity(cartItems[key]);
-        console.log(Number(key));
+        console.log("hello");
       }
-      console.log(
-        "Count changed, component rerendered",
-        item.id,
-        Number(key),
-        quantity,
-        cartItems
-      );
+      // console.log(
+      //   "Count changed, component rerendered",
+      //   item.id,
+      //   Number(key),
+      //   quantity,
+      //   cartItems
+      // );
     }
     // setNumber(0);
-  }, [quantity]);
+  }, [cartItems, item.id]);
   const handlePlus = () => {
     setNumber(number + 1);
     addToCart(item.id);

@@ -20,9 +20,9 @@ const FoodList = ({ menu }) => {
             <Text className="text-gray-500">{item.restaurant}</Text>
             <View className="flex-row justify-between items-center mt-1">
               <View className="flex-row items-center">
-                <Text className="text-lg font-bold">{item.price}</Text>
+                <Text className="text-lg font-bold">${item.price}</Text>
                 <Text className="text-sm text-gray-400 line-through ml-2">
-                  {item.oldPrice}
+                  ${item.oldPrice}
                 </Text>
               </View>
               <View className="flex-row items-center space-x-1">
