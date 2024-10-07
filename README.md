@@ -17,7 +17,7 @@
 <p>Below are some screenshots of the app:</p>
 <div style="display: flex; gap: 10px;">  
     <img src="./picture/loadingScreen.jpg" alt="Screenshot 1" width="150" />
-    <img src="./picture/useLocation.jpg" alt="Screenshot 2" width="150" />
+<!--     <img src="./picture/useLocation.jpg" alt="Screenshot 2" width="150" /> -->
     <img src="./picture/home.jpg" alt="Screenshot 3" width="150" />
     <img src="./picture/shop.jpg" alt="Screenshot 3" width="150" />
     <img src="./picture/cart.jpg" alt="Screenshot 3" width="150" />
